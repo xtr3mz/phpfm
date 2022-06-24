@@ -38,6 +38,7 @@
 $version = '1.7.9';
 $charset = 'UTF-8';
 $debug_mode = false;
+$system_charset='ISO-8859-1';//for chinese user GB2312
 $max_php_recursion = 200;
 $resolve_ids = 0;
 $quota_mb = 0;
@@ -1833,7 +1834,7 @@ function fs_encode($str){
     global $is_windows;
     if ($is_windows) {
         if (extension_loaded('mbstring') && extension_loaded('iconv')) {
-            $str = convert_charset($str,'ISO-8859-1');
+            $str = convert_charset($str,$system_charset);
         }
     }
     return $str;
